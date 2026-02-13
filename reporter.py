@@ -38,8 +38,8 @@ class ReportGenerator:
         disk_usage = [row[2] for row in history_data]
 
         plt.style.use('seaborn-v0_8-darkgrid')
-        # Tamaño reducido para ajustarse mejor al PDF
-        fig, ax1 = plt.subplots(figsize=(8, 4.5))
+        # Tamaño optimizado para PDF horizontal (landscape)
+        fig, ax1 = plt.subplots(figsize=(10, 5))
 
         color = 'tab:cyan'
         ax1.set_xlabel('Fecha y Hora', fontsize=10)
@@ -82,13 +82,18 @@ class ReportGenerator:
         <html>
             <head>
                 <style>
-                    body {{ font-family: sans-serif; margin: 2em; }}
-                    h1 {{ color: #333; }}
-                    table {{ width: 100%; border-collapse: collapse; margin-bottom: 2em; }}
-                    th, td {{ border: 1px solid #ddd; padding: 8px; text-align: left; }}
+                    @page {{
+                        size: A4 landscape;
+                        margin: 1.5cm;
+                    }}
+                    body {{ font-family: sans-serif; margin: 1em; }}
+                    h1 {{ color: #333; font-size: 24px; }}
+                    h2 {{ color: #555; font-size: 18px; }}
+                    table {{ width: 100%; border-collapse: collapse; margin-bottom: 2em; font-size: 11px; }}
+                    th, td {{ border: 1px solid #ddd; padding: 6px; text-align: left; }}
                     th {{ background-color: #f2f2f2; }}
                     .error {{ color: red; font-weight: bold; }}
-                    .graph {{ text-align: center; margin-top: 2em; }}
+                    .graph {{ text-align: center; margin-top: 1em; page-break-inside: avoid; }}
                 </style>
             </head>
             <body>
