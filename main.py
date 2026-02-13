@@ -17,8 +17,8 @@ def main():
                         help="Nombre de la base de datos SQLite (por defecto: sentinelpy.db).")
     parser.add_argument("--report_name", default="sentinelpy_report.pdf",
                         help="Nombre del archivo PDF del informe (por defecto: sentinelpy_report.pdf).")
-    parser.add_argument("--ssh_key", default=os.path.expanduser("~/.ssh/id_rsa"),
-                        help="Ruta a la clave privada SSH (por defecto: ~/.ssh/id_rsa).")
+    parser.add_argument("--ssh_key", default=os.path.expanduser("~/.ssh/id_rsa_sentinelpy"),
+                        help="Ruta a la clave privada SSH (por defecto: ~/.ssh/id_rsa_sentinelpy).")
 
     args = parser.parse_args()
 
