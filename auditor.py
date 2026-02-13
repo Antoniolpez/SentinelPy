@@ -10,7 +10,7 @@ class SystemAuditor:
     Realiza auditorías del sistema, tanto locales como remotas vía SSH.
     """
 
-    def __init__(self, ssh_key_path="~/.ssh/id_rsa"):
+    def __init__(self, ssh_key_path="~/.ssh/id_rsa_sentinelpy"):
         """
         Inicializa el auditor del sistema.
 
