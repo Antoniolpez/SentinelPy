@@ -16,15 +16,48 @@ Herramienta de auditoría automatizada de red para monitorización de sistemas L
 - Ubuntu Server/Desktop para las VMs
 - Acceso SSH entre máquinas
 
-## 🚀 Instalación
+## 🚀 Instalación Rápida
+
+### En el Servidor (Ubuntu Server)
 
 ```bash
-# Instalar dependencias
-pip install psutil paramiko matplotlib weasyprint
-
 # Clonar repositorio
 git clone https://github.com/Antoniolpez/SentinelPy.git
 cd SentinelPy
+
+# Ejecutar script de instalación (instala todo automáticamente)
+bash scripts/install_server.sh
+```
+
+### En los Nodos (Ubuntu Desktop)
+
+```bash
+# Clonar repositorio
+git clone https://github.com/Antoniolpez/SentinelPy.git
+cd SentinelPy
+
+# Ejecutar script de instalación para nodos
+bash scripts/install_node.sh
+```
+
+### Instalación Manual
+
+Si prefieres instalar manualmente:
+
+```bash
+# Dependencias del sistema (Ubuntu/Debian)
+sudo apt update
+sudo apt install -y \
+    python3 \
+    python3-pip \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libgdk-pixbuf2.0-0 \
+    libffi-dev \
+    shared-mime-info
+
+# Dependencias Python
+pip3 install -r requirements.txt
 ```
 
 ## 🔧 Configuración
@@ -77,6 +110,35 @@ python3 main.py
 
 # Con parámetros personalizados
 python3 main.py --inventory mi_inventario.json --report_name informe.pdf
+```
+
+## 🔧 Troubleshooting
+
+### Error: libpango no encontrado
+
+Si ves errores como `cannot load library 'libpango-1.0-0'`:
+
+```bash
+# Instalar dependencias del sistema para WeasyPrint
+sudo apt install -y libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0
+```
+
+O simplemente ejecuta el script de instalación:
+```bash
+bash scripts/install_server.sh
+```
+
+### Error de permisos SSH
+
+Si no puedes conectar por SSH:
+```bash
+# Verificar permisos de claves
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+chmod 644 ~/.ssh/id_rsa.pub
+
+# En el nodo, verificar authorized_keys
+sudo chmod 600 /home/monitor/.ssh/authorized_keys
 ```
 
 ## 📄 Licencia

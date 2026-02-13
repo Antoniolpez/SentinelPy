@@ -5,8 +5,13 @@
         "user": "ubuntu"
     },
     {
-        "hostname": "servidor_ficticio",
-        "ip": "192.168.1.250",
-        "user": "testuser"
+        "hostname": "servidor2",
+        "ip": "10.100.100.12",
+        "user": "monitor"
+    },
+    {
+        "hostname": "servidor1",
+        "ip": "10.100.100.11",
+        "user": "monitor"
     }
 ]
