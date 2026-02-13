@@ -38,23 +38,24 @@ class ReportGenerator:
         disk_usage = [row[2] for row in history_data]
 
         plt.style.use('seaborn-v0_8-darkgrid')
-        fig, ax1 = plt.subplots(figsize=(12, 6))
+        # Tamaño reducido para ajustarse mejor al PDF
+        fig, ax1 = plt.subplots(figsize=(8, 4.5))
 
         color = 'tab:cyan'
-        ax1.set_xlabel('Fecha y Hora')
-        ax1.set_ylabel('Uso de CPU (%)', color=color)
+        ax1.set_xlabel('Fecha y Hora', fontsize=10)
+        ax1.set_ylabel('Uso de CPU (%)', color=color, fontsize=10)
         ax1.plot(dates, cpu_usage, color=color, marker='o', linestyle='-', label='CPU')
-        ax1.tick_params(axis='y', labelcolor=color)
-        ax1.tick_params(axis='x', rotation=45)
+        ax1.tick_params(axis='y', labelcolor=color, labelsize=9)
+        ax1.tick_params(axis='x', rotation=45, labelsize=8)
 
         ax2 = ax1.twinx()
         color = 'tab:green'
-        ax2.set_ylabel('Uso de Disco (%)', color=color)
+        ax2.set_ylabel('Uso de Disco (%)', color=color, fontsize=10)
         ax2.plot(dates, disk_usage, color=color, marker='x', linestyle='--', label='Disco')
-        ax2.tick_params(axis='y', labelcolor=color)
+        ax2.tick_params(axis='y', labelcolor=color, labelsize=9)
 
-        plt.title(f'Historial de Métricas para {hostname}', fontsize=16)
-        fig.tight_layout()
+        plt.title(f'Historial de Métricas para {hostname}', fontsize=14)
+        fig.tight_layout(pad=1.5)
 
         # Guardar la gráfica en un buffer en memoria
         buf = BytesIO()
